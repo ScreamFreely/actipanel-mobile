@@ -1,7 +1,7 @@
 <template>
   <div class="event_main">
 	<h1>MnActivist</h1>
-	<h3><a href="/about">About</a></h3>
+	<h3><a href="/about/">About</a></h3>
 
 <el-select v-model="calendar">
   <el-option v-for="cal in cals" :key="cal.key" :label="cal.label" :value="cal.label"></el-option>

@@ -18,7 +18,6 @@ yarn-error.log*
 build/
 res/
 hooks/
-config/
 platforms/
 plugins/
 static/
