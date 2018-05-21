@@ -6,12 +6,12 @@
 <el-select v-model="calendar">
   <el-option v-for="cal in cals" :key="cal.key" :label="cal.label" :value="cal.label"></el-option>
 </el-select>
-<br />
+<br /> <br />
 <el-button type="primary" v-on:click="getCal(calendar)">MnA</el-button>
 
 
 <div v-for="e in events" >
-     <div justify="center">
+     <div justify="left">
           <h2>{{e.name}}</h2>
         </div>
      <div justify="center">
