@@ -1,0 +1,204 @@
+<template>
+  <div class="event_main">
+
+  <el-row v-if="addEvent == true" :gutter="24" type="flex" class="row-bg">
+      <el-col :span="22" :offset="1" justify="center">
+      <el-form ref="newEvent" :model="newEvent" label-width="20px">
+
+    <el-form-item label=" " prop="name" required>
+    <el-input placeholder="Event Name" v-model="newEvent.name"></el-input>
+    </el-form-item>
+
+    <el-form-item label=" " required>
+         <el-date-picker
+              v-model="newEvent.startdate"
+        type="datetime"
+        placeholder="Event date and time">
+          </el-date-picker>
+  </el-form-item>
+  
+  <el-form-item label=" " required>
+    <el-select v-model="newEvent.event_type" placeholder="Event Type">
+        <el-option
+        v-for="item in options"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value">
+        </el-option>
+    </el-select>
+  </el-form-item>
+  
+  <el-form-item label=" " required>
+    <el-input placeholder="Location, preferably an address" v-model="newEvent.location"></el-input>
+  </el-form-item>
+  
+  <p>The following two fields will be used to match your event to others in the same city, or being hosted by the same organization(s). Separate mulitple participants with a comma.</p>
+  
+  <el-form-item label=" " required>
+    <el-input placeholder="City" v-model="newEvent.city"></el-input>
+  </el-form-item>
+  
+  <el-form-item label=" ">
+    <el-input placeholder="Participants" v-model="newEvent.participants"></el-input>
+  </el-form-item>
+  
+  <el-form-item label=" " required>
+    <el-input placeholder="if none use 'sf.org'" v-model="newEvent.link">
+        <template slot="prepend">http://</template>
+          </el-input>
+  </el-form-item>
+  
+  <el-form-item label=" " required>
+    <el-input
+      type="textarea"
+        autosize
+          placeholder="What's going on?"
+            v-model="newEvent.description">
+    </el-input>
+  </el-form-item>
+  
+  <el-form-item label=" ">
+    <el-input placeholder="Pass word" v-model="newEvent.password"></el-input>   
+  </el-form-item>
+  <el-form-item label=" ">
+  <span>
+  {{ num1 }} + {{ num2 }} = <input placeholder="??" size="5" v-model="newEvent.numnum"></input>
+  </span>
+  </el-form-item>
+
+
+  <el-button type='primary' @click="sendEvent(newEvent)">Submit</el-button>
+  <el-button @click="addEvent = !addEvent" icon="el-icon-close"/>
+  
+  </el-form>
+  </el-col>
+</el-row>
+
+<div v-if="addEvent == false">
+<center><span>
+<el-select v-model="calendar">
+  <el-option v-for="cal in callist" :key="cal.name" :label="cal.name" :value="cal.name"></el-option>
+</el-select>
+<el-button v-on:click="getCal(calendar)" icon="el-icon-refresh"/>
+<el-button v-on:click='addEvent = !addEvent' icon="el-icon-plus"/>
+</span></center>
+
+
+
+<span>
+<el-select v-model="calendar">
+  <el-option v-for="cal in cals" :key="cal.key" :label="cal.label" :value="cal.key"></el-option>
+</el-select>
+<el-button v-on:click="getCal(calendar)" icon="el-icon-refresh"/>
+</span>
+
+
+
+
+
+
+<div v-for="e in events" >
+     <div justify="left">
+          <h3>{{e.name}}</h3>
+        </div>
+     <div justify="center">
+	<div class="">
+	  <b>{{e.start_date | moment("dddd")}} {{e.start_date | moment("MMM D h:mma")}} </b>
+	  <br /><br />
+
+	  <b><div v-for="p in e.location.name.split(',')">{{ p }}<br/></div> 
+
+		 {{ e.jurisdiction.name }}</b>
+        </div>	  
+     </div>
+     </div>
+  </div>
+
+</div>
+</template>
+
+
+
+
+<script>
+export default {
+  name: 'Events',
+  data () {
+    return {
+      msg: 'Events',
+      next: '',
+      count: '',      
+      events: [],
+      calendar: '',
+      cals: [{ 'key': 'Minneapolis', 'label': 'Minneapolis'}, 
+	     {'key': 'Saint-Paul', 'label': 'Saint Paul'}, 
+	     {'key': 'Minnesota', 'label': 'Minnesota'}, 
+	     {'key': 'All', 'label': 'All'}],
+    }
+  },
+  methods: {
+  getMore: function(next){
+      this.$http.get(next)
+      .then(function(response){
+        console.log(response);
+	this.events = this.events.concat(response.data.results);
+	this.next = response.data.next.replace('http', 'https');	
+      });
+    },
+   getCal: function(cal){
+       if (cal == 'All'){
+	var link = 'https://api.mnactivist.org/api/events';
+       } else {
+        var link = 'https://api.mnactivist.org/api/pics/' + cal;
+       }
+       this.$http.get(link)
+       .then(function(response){
+         this.events = response.data.results;
+      });
+    },
+  },
+  created: function(){
+      console.log('created ran');
+      this.$http.get('https://api.mnactivist.org/api/events')
+//      this.$http.get('http://localhost:8000/api/events')
+      .then(function(response){
+	this.events = response.data.results;
+	this.next = response.data.next.replace('http', 'https');		
+	this.count = response.data.count;		
+      });
+  }
+}
+</script>
+
+
+<style scoped>
+h1, h2, h3 {
+  font-weight: normal;
+  color: #42b983;	
+  margin-bottom: 2px;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+.time {
+  padding: 20px 5px 5px 5px;
+  text-align: right;
+}
+.push-day {
+  padding: 3px 0px 0px 15px;
+}
+.events {
+  border: 2px #000 solid;
+  border-radius: 25px;
+  padding: 0px 5px 25px 5px;
+  margin: 15px;
+}
+</style>
