@@ -19,7 +19,7 @@ export default new Router({
     {
       path: '/',
       name: 'Sign-In',
-      component: noAuthEvents,
+      component: SignIn,
     },
     {
       path: '/main',

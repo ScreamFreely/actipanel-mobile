@@ -16,13 +16,13 @@ import axios from 'axios'
 // const base = 'https://api.gaactivist.org/'
 // const stateName = "Georgia"
 
-const site = 'IlActivist'
-const base = 'https://api.ilactivist.org/'
-const stateName = "Illinois"
+// const site = 'IlActivist'
+// const base = 'https://api.ilactivist.org/'
+// const stateName = "Illinois"
 
-// const site = 'MnActivist.Org'
-// const base = 'https://api.mnactivist.org/'
-// const stateName = "Minnesota"
+const site = 'MnActivist.Org'
+const base = 'https://api.mnactivist.org/'
+const stateName = "Minnesota"
 
 // const site = 'NYActivist'
 // const base = 'https://api.nyactivist.org/'

@@ -6,7 +6,12 @@
           <img src="../../static/icon.png" style="heigh:auto;width:50%;"/>
         </a>
         <br/>
+        <!--
         <h3><a href="#/profile">Profile</a></h3>
+        <h3><a href="#/about">People</a></h3>
+        <h3><a href="#/about">Organizations</a></h3>
+        <h3><a href="#/about">Policies</a></h3>
+        -->
         <h3><a href="#/about">About</a></h3>
         <h3><a href="#/" @click="logout">Logout</a></h3>
       </center>
@@ -17,7 +22,7 @@
         <h3>Welcome {{ screenname }}</h3>
         <h4>
             <a href="#/main#" v-on:click='addEvent = !addEvent' style="padding:10px;">+ Event</a>
-            <a href="#/main#" v-on:click='addComment = !addComment'> + Comment</a>
+            <a href="#/main#" v-on:click='addComment = !addComment'> + Comment</el-button>
         </h4>
       <br/>
     </el-col>
@@ -95,7 +100,7 @@
   </el-form-item>
 
   <center>
-    <el-button size="small" type='primary' @click="sendQuote(newQuote)">Submit Quote</el-button>
+    <el-button size="small" size="small" type='primary' @click="sendQuote(newQuote)">Submit Quote</el-button>
     <el-button size="small" @click="addComment = !addComment" icon="el-icon-close"/>
   </center>
   
