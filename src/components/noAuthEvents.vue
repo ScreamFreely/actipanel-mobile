@@ -1,27 +1,18 @@
 <template>
   <div class="event_main">
-     <div class="overlay" v-show="overlay">
+    <div>
+    <br/>
       <center>
-        <a href="#/altmain#"  @click="overlay = !overlay">
-          <img src="../../static/icon.png"  style="heigh:auto;width:50%;"/>
+        <a href="#/about">
+          <img src="../../static/icon.png"  style="heigh:auto;width:25%;"/>
         </a>
-        <br/>
-        <h3><a href="#/about">About</a></h3>
       </center>
+      <br/>
     </div>
 
-    <el-row :gutter="24" type="flex" class="row-bg">
-      <el-col :span="7" :offset="0" justify="center">
-        <a href="#/altmain#"  @click="overlay = !overlay">
-          <img src="../../static/icon.png"  style="heigh:auto;width:100%;"/>
-        </a>
-      </el-col>
-    </el-row>
-
-<div v-if="addEvent == false">
+<div>
   <center>
     <span>
-
       <el-select v-model="calendar">
         <el-option v-for="cal in callist" :label="cal.name" :value="cal.name"></el-option>
       </el-select>
@@ -34,7 +25,7 @@
     -->
   </center>
 
-  <el-row v-if="addEvent == false" v-for="x in events" :gutter="24" type="flex" class="row-bg" justify="center"> 
+  <el-row v-for="x in events" :gutter="24" type="flex" class="row-bg" justify="center"> 
      <el-col  :span="24">
       <center><h2 v-for="e in x.slice(-1)">{{e.start_date | moment("dddd MMM D")}}</h2></center>
 

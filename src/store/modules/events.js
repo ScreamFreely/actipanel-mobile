@@ -182,7 +182,8 @@ const actions = {
 // mutations
 const mutations = {
   setCalendars(state, calendars){
-    calendars.push({'id': 'null', 'name': 'Arts & Music'}, {'id': 'null', 'name': 'Civic'}, {'id': 'null', 'name': 'Demonstrations'}, {'id': 'null', 'name': 'Educative'}, {'id': 'null', 'name': 'Org Events'}, {'id': 'null', 'name': 'All Events'} )
+    // calendars.push({'id': 'null', 'name': 'Arts & Music'}, {'id': 'null', 'name': 'Civic'}, {'id': 'null', 'name': 'Demonstrations'}, {'id': 'null', 'name': 'Educative'}, {'id': 'null', 'name': 'Org Events'}, {'id': 'null', 'name': 'All Events'} )
+    calendars.push({'id': 'null', 'name': 'All Events'} )
     state.callist = calendars
   },
   setJurisdictions(state, calendars){

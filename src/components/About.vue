@@ -2,17 +2,18 @@
   <div class="hello">
     <el-row>
       <el-col>
+      <br/>
       <center>
-        <a href="/">
-       <img src="../../static/banner.jpg" style="heigh:auto;width:100%;"/>
+        <a href="#/">
+       <img src="../../static/icon.png" style="heigh:auto;width:25%;"/>
        </a>
-       <h1>About</h1>
+       <h1>About {{ siteName }}</h1>
 
       <p>{{ siteName }} is the project of a single individual, Canin Carlos a.k.a. <a href="https://www.cultureclap.com" target="_blank">Culture Clap</a>.</p>
 
       <p><a href="https://www.cultureclap.com" target="_blank"><img src="../../static/profile3.jpg" style="width: 100%;"/></a></p>
 
-      <p>I learned to code for the sole reason of wanting to build this project.</p>
+      <p>I learned to code for the sole purpose of wanting to build this project.</p>
 
       <p>To have an application whereby each morning I wake, I can know what my elected officials are up to.</p>
 
