@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-	<img src="./assets/mnactbanner.jpg" style="heigh:auto;width:100%;"/>
     <router-view/>
   </div>
 </template>

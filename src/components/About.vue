@@ -70,12 +70,8 @@
 
 <script>
 
-import {AUTH_LOGOUT} from '../store/actions/auth'
-import {AUTH_REQUEST} from '../store/actions/auth'
-import {USER_PROFILE, DIFF_JURIS} from '../store/actions/user'
 import { mapState } from 'vuex'
 import { mapMutations } from 'vuex'
-import axios from 'axios';
 
 export default {
   data () {
@@ -86,31 +82,11 @@ export default {
   },
   components: {
   },
-  created: function(){
-      console.log('created ran')
-      this.$store.dispatch(USER_PROFILE, this.screenname)
-      this.$store.dispatch(DIFF_JURIS, this.screenname)
-      this.$store.dispatch('events/getJurisdictions')  
-      
-  },
 
   computed: mapState({
-    icon: state => state.posts.icon,
-    banner: state => state.posts.banner,
     stateName: state => state.posts.stateName,
     siteName: state => state.posts.siteName,
-    isAuth: state => state.auth.token,
-    screenname: state => state.user.username,
-    juridiff: state => state.user.diffedjuris,
-    profile: state => state.user.profile
   }),
-
-  methods: {
-    donate: function(){
-      location.assign('https://mnactivist.org/donate')
-    }
-
-  },
 }
 </script>
 
@@ -145,6 +121,7 @@ export default {
 .el-col.mi {
     padding: 15px 5px 10px 5px;
 }
+
 h1, h2 {
   font-weight: normal;
   color: #000000; 

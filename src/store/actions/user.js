@@ -1,9 +1,0 @@
-export const USER_PROFILE = 'USER_PROFILE'
-export const USER_PROFILE_SUCCESS = 'USER_PROFILE_SUCCESS'
-export const USER_SIGNUP = 'USER_SIGNUP'
-export const USER_REQUEST = 'USER_REQUEST'
-export const USER_SUCCESS = 'USER_SUCCESS'
-export const USER_ERROR = 'USER_ERROR'
-
-export const DIFF_JURIS = 'DIFF_JURIS'
-export const ORGS_DIFFED = 'ORGS_DIFFED'
