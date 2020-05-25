@@ -72,21 +72,17 @@
 
 import { mapState } from 'vuex'
 import { mapMutations } from 'vuex'
+import api from '../store/api'
 
 export default {
   data () {
     return {
       checkedJuries: [],
-      addJuris: false, 
+      addJuris: false,
+      stateName: api.stateName, 
+      siteName: api.site,
     }
   },
-  components: {
-  },
-
-  computed: mapState({
-    stateName: state => state.posts.stateName,
-    siteName: state => state.posts.siteName,
-  }),
 }
 </script>
 
