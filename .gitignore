@@ -15,11 +15,6 @@ yarn-error.log*
 *.sln
 *.swp
 
-build/
-res/
-hooks/
-plugins/
-static/
 test/
 zarchive/
 www/
